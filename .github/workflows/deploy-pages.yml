@@ -30,10 +30,17 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm i
 
-      - name: Build static export
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
         run: |
           echo "repo name: ${{ github.event.repository.name }}"
           NEXT_OUTPUT=export NEXT_BASE_PATH=/${{ github.event.repository.name }} npm run build
+
+      - name: Export static site
+        run: |
+          NEXT_OUTPUT=export NEXT_BASE_PATH=/${{ github.event.repository.name }} npx next export -o out
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -50,4 +57,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
