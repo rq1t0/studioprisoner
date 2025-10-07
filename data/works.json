@@ -1,0 +1,151 @@
+[
+  {
+    "slug": "ex-51ybrwek2al",
+    "artist": "Serenity In Murder",
+    "title": "THE ECLIPSE",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-06-01",
+    "thumb": "/images/works/uploads/51YBRWEk2AL.jpg",
+    "hero": "/images/works/uploads/51YBRWEk2AL.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "ex-912flwnewvl",
+    "artist": "CRYSTAL LAKE",
+    "title": "CUBES",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-07-01",
+    "thumb": "/images/works/uploads/912fLwNEwvL._SL1500_-1024x1024-1.jpg",
+    "hero": "/images/works/uploads/912fLwNEwvL._SL1500_-1024x1024-1.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "ex-a1yfvatwezl",
+    "artist": "TEARS OF TRAGEDY",
+    "title": "STATICE",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-06-01",
+    "thumb": "/images/works/uploads/A1yFVaTWEzL._SL1500_.jpg",
+    "hero": "/images/works/uploads/A1yFVaTWEzL._SL1500_.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "change-of-generation",
+    "artist": "Unlucky Morpheus",
+    "title": "CHANGE OF GENERATION",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-05-01",
+    "thumb": "/images/works/uploads/CHANGE-OF-GENERATION.jpg",
+    "hero": "/images/works/uploads/CHANGE-OF-GENERATION.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。",
+    "tracks": [
+      { "title": "Intro", "description": "アルバムの導入を飾る短いインストゥルメンタル。" },
+      { "title": "Change of Generation", "description": "メイン曲。テーマの動機を強調したアレンジ。", "youtubeId": "dQw4w9WgXcQ" },
+      { "title": "Midnight Run", "description": "疾走感のあるビートとギターが特徴。" }
+    ]
+  },
+  {
+    "slug": "day-of-salvation",
+    "artist": "THOUSAND EYES",
+    "title": "DAY OF SALVATION",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-04-01",
+    "thumb": "/images/works/uploads/DAY-OF-SALVATION.jpg",
+    "hero": "/images/works/uploads/DAY-OF-SALVATION.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "infernally-revulsed",
+    "artist": "INFERNAL REVULSION",
+    "title": "INFERNALLY REVULSED",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-03-01",
+    "thumb": "/images/works/uploads/Infernally-Revulsed.jpg",
+    "hero": "/images/works/uploads/Infernally-Revulsed.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "whiteout-limited",
+    "artist": "NOCTURNAL BLOODLUST",
+    "title": "WHITEOUT",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-02-01",
+    "thumb": "/images/works/uploads/WHITEOUT初回限定盤.jpg",
+    "hero": "/images/works/uploads/WHITEOUT初回限定盤.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "zetes",
+    "artist": "NOCTURNAL BLOODLUST",
+    "title": "ZēTēS",
+    "roles": ["Full Production"],
+    "releaseDate": "2026-01-01",
+    "thumb": "/images/works/uploads/ZeTeS.jpg",
+    "hero": "/images/works/uploads/ZeTeS.jpg",
+    "body": "デモ作品（例）。後で正式な作品情報に差し替えてください。"
+  },
+  {
+    "slug": "echoes-of-night",
+    "artist": "Mira K.",
+    "title": "Echoes of Night",
+    "roles": ["Full Production"],
+    "releaseDate": "2024-07-12",
+    "thumb": "/images/works/work-1.svg",
+    "hero": "/images/works/work-1.svg",
+    "youtubeId": "dQw4w9WgXcQ",
+    "links": [{ "label": "Streaming", "url": "https://example.com/stream" }],
+    "body": "真夜中の街が持つ静かなエネルギーをテーマに、質感のあるアナログ感とタイトなローエンドを両立。ボーカルの息遣いまで伝わるように丁寧に仕上げました。"
+  },
+  {
+    "slug": "silver-lines",
+    "artist": "The Gridlines",
+    "title": "Silver Lines",
+    "roles": ["Recording", "Mixing"],
+    "releaseDate": "2024-05-30",
+    "thumb": "/images/works/work-2.svg",
+    "hero": "/images/works/work-2.svg",
+    "links": [{ "label": "Bandcamp", "url": "https://example.com/bandcamp" }],
+    "body": "エッジの効いたギターとドライなボーカルを軸に、スピード感のあるミックスでストレートな躍動感を演出。"
+  },
+  {
+    "slug": "warm-signal",
+    "artist": "Luca",
+    "title": "Warm Signal",
+    "roles": ["Mastering"],
+    "releaseDate": "2024-03-18",
+    "thumb": "/images/works/work-3.svg",
+    "hero": "/images/works/work-3.svg",
+    "body": "アナログ機材の質感を活かしながら、デジタルでの緻密な調整で現代的なレンジ感を確保。"
+  },
+  {
+    "slug": "slow-bloom",
+    "artist": "Iris",
+    "title": "Slow Bloom",
+    "roles": ["Mixing", "Mastering"],
+    "releaseDate": "2023-12-01",
+    "thumb": "/images/works/work-4.svg",
+    "hero": "/images/works/work-4.svg",
+    "youtubeId": "oHg5SJYRHA0",
+    "body": "うねるシンセと余韻の長いボーカルを立体的に配置し、静と動のコントラストを際立たせました。"
+  },
+  {
+    "slug": "stone-and-water",
+    "artist": "Monochrome Sea",
+    "title": "Stone and Water",
+    "roles": ["Recording"],
+    "releaseDate": "2023-08-10",
+    "thumb": "/images/works/work-5.svg",
+    "hero": "/images/works/work-5.svg",
+    "body": "生楽器の空気感を重視し、自然なダイナミクスを損なわないように収録と編集を実施。"
+  },
+  {
+    "slug": "neon-birds",
+    "artist": "Kite Club",
+    "title": "Neon Birds",
+    "roles": ["Full Production"],
+    "releaseDate": "2023-04-22",
+    "thumb": "/images/works/work-6.svg",
+    "hero": "/images/works/work-6.svg",
+    "body": "ビートのグルーヴを損なわないよう、低域の質感を細かくコントロール。鮮やかな色彩感のあるサウンドへ。"
+  }
+]

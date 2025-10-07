@@ -1,0 +1,16 @@
+{
+  "shortBio": "A producer collective crafting high-impact records for global brands and artists.",
+  "longBio": "We partner from concept through final master, delivering consistent quality across mediums and markets. Our approach blends analog warmth with precise digital control to serve the story.",
+  "hero": "/images/hero-vertical.svg",
+  "photos": ["/images/about.svg", "/images/service-1.svg"],
+  "selectedTracks": [
+    { "title": "Echoes of Night", "url": "https://example.com/track1" },
+    { "title": "Silver Lines", "url": "https://example.com/track2" }
+  ],
+  "videos": ["ysz5S6PUM-U"],
+  "pressQuotes": [
+    { "source": "Music Journal", "quote": "Immaculate balance of energy and detail." }
+  ],
+  "oneSheetPdf": "/epk/one-sheet.pdf"
+}
+

@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 8px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+/* Language-aware font stacks (safe system fallbacks) */
+html[lang="ja"] body {
+  font-family: var(--font-zen-kaku), -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-feature-settings: "palt" 1;
+  font-weight: 300;
+}
+html[lang="en"] body {
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, "Segoe UI Variable", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-weight: 300;
+}
+
+/* Improve English typography wrapping to avoid odd breaks */
+html[lang="en"] p, html[lang="en"] .heading-condensed, html[lang="en"] .text-foreground {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+@supports (text-wrap: balance) {
+  html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3 { text-wrap: balance; }
+}
+
+.prose-invert h1, .prose-invert h2, .prose-invert h3 {
+  @apply text-foreground;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+.heading-condensed {
+  font-family: "Arial Narrow", "Helvetica Neue Condensed", "Haettenschweiler", Impact, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.card-hover {
+  @apply transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg;
+}
+
+/* Hero visuals */
+.hero-bg {
+  background-color: #0B0B0D;
+  background-image:
+    radial-gradient(1000px 600px at 80% 10%, rgba(30,108,255,0.15), rgba(90,168,255,0.05) 40%, rgba(11,11,13,0) 70%),
+    radial-gradient(800px 500px at 20% 50%, rgba(90,168,255,0.06), rgba(11,11,13,0) 60%);
+  background-blend-mode: screen, normal;
+  position: relative;
+}
+.hero-bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0.025 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .45; pointer-events: none; animation: noiseShift 18s linear infinite;
+}
+
+.text-glow {
+  text-shadow: 0 0 14px rgba(90, 168, 255, 0.55);
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -6px;
+  height: 2px; background: #5AA8FF; transform: scaleX(0); transform-origin: left;
+  transition: transform .2s ease-out, opacity .2s ease-out; opacity: .75;
+}
+.nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
+/* Show underline for active (selected) items */
+.nav-link.is-active::after { transform: scaleX(1); opacity: 1; }
+
+/* Animated blue glow layer */
+.hero-anim { background: radial-gradient(600px 400px at 70% 20%, rgba(30,108,255,0.18), rgba(90,168,255,0.05) 45%, rgba(11,11,13,0) 70%); filter: blur(10px); animation: glowPulse 6s ease-in-out infinite; }
+
+@keyframes glowPulse {
+  0%, 100% { opacity: .85; transform: translateY(0px); }
+  50% { opacity: .6; transform: translateY(-6px); }
+}
+
+@keyframes noiseShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 160px 160px; }
+}
+
+/* Hero image: zoom-in once on load (Ken Burns style) */
+.hero-img-zoom {
+  transform-origin: 50% 40%;
+  animation: heroZoomOutOnce 2.2s ease-out forwards;
+  will-change: transform;
+}
+@keyframes heroZoomOutOnce {
+  0% { transform: scale(1.05) translate3d(0.3%, -0.8%, 0); }
+  40% { transform: scale(1.03) translate3d(0.2%, -0.5%, 0); }
+  100% { transform: scale(1) translate3d(0, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-img-zoom { animation: none; }
+}
+
+/* Floating email button subtle motion */
+.email-fab-anim { animation: floatY 4.2s ease-in-out infinite; }
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(12px) scale(0.98); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.65,.2,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Card media hover zoom */
+.card-img-zoom { transition: transform .6s cubic-bezier(.2,.65,.2,1); will-change: transform; }
+.group:hover .card-img-zoom { transform: scale(1.06); }
+.group:hover .overlay-fade { opacity: .85; }
+
+/* Multi-line clamp utilities (Tailwind plugin-free) */
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-5 { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Scanline overlay */
+.scanlines {
+  background-image: repeating-linear-gradient(to bottom, rgba(90,168,255,0.05) 0, rgba(90,168,255,0.05) 1px, transparent 1px, transparent 3px);
+  animation: scanMove 12s linear infinite;
+}
+@keyframes scanMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+/* Logo subtle sheen */
+.logo-shine { position: relative; display: inline-block; }
+.logo-shine::after {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.10) 45%, transparent 60%);
+  transform: translateX(-120%);
+  animation: logoShine 5.6s ease-in-out infinite;
+}
+@keyframes logoShine {
+  0%, 20% { transform: translateX(-120%); opacity: 0.0; }
+  45% { opacity: 0.9; }
+  60%, 100% { transform: translateX(120%); opacity: 0.0; }
+}

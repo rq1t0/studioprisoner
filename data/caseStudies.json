@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "global-saas-audio-brand",
+    "client": "Global SaaS Co.",
+    "industry": "Software / SaaS",
+    "locale": "EN",
+    "challenge": "Launch campaign required a sonic identity consistent across platforms.",
+    "approach": [
+      "Stakeholder interviews and brand voice alignment",
+      "Prototype cues and iterative A/B for market fit",
+      "Mix/master for broadcast and digital specs"
+    ],
+    "results": { "kpis": ["+32% ad recall", "+18% brand lift"] },
+    "media": ["ysz5S6PUM-U"],
+    "testimonial": "Clear process and consistent delivery across regions.",
+    "cta": "mailto:book-your-recording@studioprisoner.jp?subject=Project%20inquiry"
+  },
+  {
+    "slug": "mobile-game-epic-score",
+    "client": "Studio Phoenix",
+    "industry": "Gaming",
+    "locale": "JP",
+    "challenge": "迫力と静寂のコントラストが必要。端末ごとの再現性も担保。",
+    "approach": [
+      "テーマ動機の定義とアセット分割",
+      "空間表現の最適化と低域管理",
+      "多環境チェックと最終マスター"
+    ],
+    "results": { "kpis": ["DAU +12%", "平均視聴時間 +20%"] },
+    "media": [],
+    "testimonial": "開発スケジュールに柔軟で助かりました。",
+    "cta": "mailto:book-your-recording@studioprisoner.jp?subject=%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%20%2F%20%E3%81%94%E4%BE%9D%E9%A0%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+  }
+]

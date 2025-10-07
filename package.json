@@ -1,0 +1,42 @@
+{
+  "name": "studio-prisoner-clone",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A faithful UI/UX clone of STUDIO PRISONER (text paraphrased, images placeholders).",
+  "scripts": {
+    "dev": "next dev -p 9000",
+    "build": "next build",
+    "start": "next start -p 9000",
+    "build:static": "NEXT_OUTPUT=export next build",
+    "build:standalone": "NEXT_OUTPUT=standalone next build",
+    "start:standalone": "NODE_ENV=production next start -p 9000",
+    "lint": "next lint",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "format": "prettier --write .",
+    "work:add": "node scripts/add-work.mjs",
+    "work:import": "node scripts/import-work.mjs",
+    "share:lt": "npx localtunnel --port 9000",
+    "share:cf": "cloudflared tunnel --url http://localhost:9000"
+  },
+  "dependencies": {
+    "next": "^14.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.7",
+    "postcss": "^8.4.47",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
