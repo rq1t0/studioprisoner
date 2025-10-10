@@ -31,7 +31,9 @@ jobs:
         run: npm ci
 
       - name: Build static site
-        run: npm run build:static
+        run: |
+          export NEXT_BASE_PATH=/studioprisoner
+          npm run build:static
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
