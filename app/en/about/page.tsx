@@ -8,7 +8,7 @@ export default function AboutPageEN() {
   return (
     <Section>
       <AboutStatement
-        img="/images/about-hero.jpg"
+        img={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/about-hero.jpg`}
         alt="Hiro in the studio"
         lines={[
           'Let’s be honest.',
