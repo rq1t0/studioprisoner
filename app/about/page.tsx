@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <Section>
       <AboutStatement
-        img={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/about-hero.jpg`}
+        img={`${process.env.NODE_ENV === 'production' ? 'https://rq1t0.github.io/studioprisoner' : ''}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/about_top_v5.jpg`}
         alt="スタジオでのHiroの写真"
         lines={[
           '正直に言いましょう。',
