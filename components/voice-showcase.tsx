@@ -36,7 +36,7 @@ export function VoiceShowcase({ voices, align = 'right', headingAlign, ctaHref =
               <div className="grid grid-cols-[100px,1fr] xs:grid-cols-[120px,1fr] sm:grid-cols-[180px,1fr] md:grid-cols-[240px,1fr] lg:grid-cols-[280px,1fr] xl:grid-cols-[320px,1fr] items-start gap-3 xs:gap-4 sm:gap-5 md:gap-6">
                 <div className="relative aspect-square w-full overflow-hidden rounded-md">
                   <Image
-                    src={v.image || '/images/works/work-1.svg'}
+                    src={v.image || `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/works/work-1.svg`}
                     alt={`${v.name} のアートワーク画像`}
                     fill
                     quality={75}

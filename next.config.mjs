@@ -55,7 +55,15 @@ const nextConfig = {
     ];
   },
   // Switch between static export and SSR (standalone) via env
-  ...(isStatic ? { output: 'export', trailingSlash: true, images: { unoptimized: true } } : {}),
+  ...(isStatic ? { 
+    output: 'export', 
+    trailingSlash: true, 
+    images: { 
+      unoptimized: true,
+      loader: 'custom',
+      loaderFile: './lib/imageLoader.js'
+    } 
+  } : {}),
   ...(isStandalone ? { output: 'standalone' } : {}),
   env: {
     NEXT_PUBLIC_BASE_PATH: process.env.NEXT_BASE_PATH || ''
