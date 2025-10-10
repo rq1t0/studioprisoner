@@ -74,7 +74,7 @@ export function Header() {
       <div className="container flex h-[64px] items-center justify-between px-6 md:px-8 md:h-[72px] pt-safe">
         <Link href={mapHref('/')} aria-label="ホームページに移動" className="focus-ring inline-flex items-center">
           <Image
-            src={`${process.env.NODE_ENV === 'production' ? 'https://rq1t0.github.io/studioprisoner' : ''}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/logo-white.png`}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/logo-white.png`}
             alt="STUDIO PRISONER"
             width={200}
             height={40}

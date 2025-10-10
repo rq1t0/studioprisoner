@@ -117,9 +117,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         
         {/* Critical resource preloading */}
-        <link rel="preload" href={`${process.env.NODE_ENV === 'production' ? 'https://rq1t0.github.io/studioprisoner' : ''}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/hero.jpg`} as="image" type="image/jpeg" fetchPriority="high" />
-        <link rel="preload" href={`${process.env.NODE_ENV === 'production' ? 'https://rq1t0.github.io/studioprisoner' : ''}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/logo-white.png`} as="image" type="image/png" fetchPriority="high" />
-        <link rel="preload" href={`${process.env.NODE_ENV === 'production' ? 'https://rq1t0.github.io/studioprisoner' : ''}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/works/work-1.svg`} as="image" type="image/svg+xml" />
+        <link rel="preload" href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/hero.jpg`} as="image" type="image/jpeg" fetchPriority="high" />
+        <link rel="preload" href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/logo-white.png`} as="image" type="image/png" fetchPriority="high" />
+        <link rel="preload" href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/works/work-1.svg`} as="image" type="image/svg+xml" />
         
         {/* Critical CSS preload */}
         <link rel="preload" href="/globals.css" as="style" />
