@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Raleway } from 'next/font/google';
 import heroImage from '@/public/images/hero.jpg';
 
-const raleway = Raleway({ subsets: ['latin'], weight: ['300', '400'] });
+const raleway = Raleway({ subsets: ['latin'], weight: ['400'] });
 import Link from 'next/link';
 // Language switcher is inlined here as static links to avoid hydration mismatch.
 
@@ -13,7 +13,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0">
         <Image
           src={heroImage}
-          alt="スタジオの横長写真"
+          alt="STUDIO PRISONERのスタジオ内観。プロフェッショナルな音楽制作環境を提供するスタジオの横長写真"
           fill
           priority
           sizes="100vw"
@@ -35,20 +35,14 @@ export function Hero() {
           </div>
           <div className="flex min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-72px)] flex-col items-center justify-center py-16 text-center">
             <h1 className={`${raleway.className} font-light md:font-normal tracking-[-0.02em] leading-[1.06]`}>
-              <span className="block text-[36px] sm:text-[54px] lg:text-[76px] xl:text-[96px]">Turn Your</span>
-              <span className="block mt-1.5 sm:mt-2 lg:mt-3 text-[34px] sm:text-[50px] lg:text-[68px] xl:text-[88px]">Imaginations Into</span>
-              <span className="block mt-1.5 sm:mt-2 lg:mt-3 text-[34px] sm:text-[50px] lg:text-[68px] xl:text-[88px] text-white">Reality</span>
+              <span className="block text-[32px] xs:text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] 2xl:text-[80px]">Turn Your</span>
+              <span className="block mt-1 sm:mt-1.5 md:mt-2 lg:mt-2.5 text-[30px] xs:text-[38px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[70px] 2xl:text-[78px]">Imaginations Into</span>
+              <span className="block mt-1 sm:mt-1.5 md:mt-2 lg:mt-2.5 text-[30px] xs:text-[38px] sm:text-[46px] md:text-[54px] lg:text-[62px] xl:text-[70px] 2xl:text-[78px] text-white">Reality</span>
             </h1>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               {/* Removed per request: View Works link */}
             </div>
-            <div className="mt-6 overflow-x-auto">
-              <div className="flex min-w-max items-center justify-center gap-8 opacity-80">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="h-8 w-24 rounded bg-gradient-to-r from-[#2a2f3a] to-[#1b1f28]" aria-hidden="true" />
-                ))}
-              </div>
-            </div>
+            {/* removed decorative placeholders under the headline for cleaner hero */}
           </div>
           <div className="pointer-events-auto relative -mt-6 flex justify-center pb-6">
             <a href="#works" className="focus-ring inline-flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground">

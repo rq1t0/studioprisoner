@@ -59,8 +59,8 @@ export default async function WorkDetail({ params }: { params: { slug: string } 
             <li aria-current="page">{work.artist} – {work.title}</li>
           </ol>
         </nav>
-        <div className="grid items-start gap-8 md:grid-cols-2">
-          <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-border">
+        <div className="grid items-start gap-6 md:grid-cols-2">
+          <div className="relative aspect-square w-full max-w-[420px] mx-auto md:max-w-none md:mx-0 overflow-hidden rounded-lg border border-border">
             <Image src={work.hero || work.thumb} alt={`${work.artist} – ${work.title} のジャケット`} fill className="object-cover" />
           </div>
           <div>

@@ -1,0 +1,6 @@
+[build]
+  publish = "out"
+  command = "echo 'Static site deployment'"
+
+[build.environment]
+  NODE_VERSION = "18"

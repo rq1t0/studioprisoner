@@ -1,25 +1,66 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { Section } from '@/components/section';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { getWorks } from '@/lib/getData';
+import type { Metadata } from 'next';
 
 export const revalidate = 60;
 
+export const metadata: Metadata = {
+  title: 'WORKS',
+  description: 'A showcase of music productions by STUDIO PRISONER. From recording to mixing and mastering, we provide comprehensive sound production services.',
+  openGraph: {
+    title: 'WORKS | STUDIO PRISONER',
+    description: 'A showcase of music productions by STUDIO PRISONER. From recording to mixing and mastering, we provide comprehensive sound production services.',
+    type: 'website',
+  },
+};
+
 export default async function WorksPageEN() {
-  const works = await getWorks();
+  const base = path.join(process.cwd(), 'public');
+  const src = await getWorks();
+  const withTime = await Promise.all(
+    src.map(async (w) => {
+      if (w.addedAt) {
+        const t = Date.parse(w.addedAt);
+        if (!Number.isNaN(t)) return { w, t };
+      }
+      try {
+        const p = path.join(base, w.thumb.startsWith('/') ? w.thumb.slice(1) : w.thumb);
+        const st = await fs.stat(p);
+        return { w, t: st.mtimeMs };
+      } catch {
+        const t = w.releaseDate ? Date.parse(w.releaseDate) : 0;
+        return { w, t: Number.isNaN(t) ? 0 : t };
+      }
+    })
+  );
+  const works = withTime.sort((a, b) => b.t - a.t).map((x) => x.w);
   return (
     <Section>
-      <h1 className="heading-condensed mb-6 text-3xl">WORKS</h1>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <h1 className="heading-condensed mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">WORKS</h1>
+      <div className="grid gap-4 sm:gap-5 md:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {works.map((w) => (
           <Link key={w.slug} href={`/en/works/${w.slug}`} className="focus-ring">
             <Card className="card-hover overflow-hidden">
               <div className="relative aspect-square w-full">
-                <Image src={w.thumb} alt={`${w.artist} – ${w.title} cover`} fill className="object-cover" />
+                <Image 
+                  src={w.thumb} 
+                  alt={`${w.artist} – ${w.title} cover`} 
+                  fill 
+                  className="object-cover" 
+                  quality={70}
+                  loading="lazy"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                />
               </div>
               <CardHeader>
-                <CardTitle className="text-base">{w.artist} – {w.title}</CardTitle>
+                <CardTitle className="text-sm sm:text-base md:text-lg">{w.artist} – {w.title}</CardTitle>
               </CardHeader>
             </Card>
           </Link>

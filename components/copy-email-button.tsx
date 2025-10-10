@@ -40,6 +40,7 @@ export function CopyEmailButton({ email, lang = 'ja', size = 'sm', className }: 
     <button
       type="button"
       onClick={onCopy}
+      data-copy-button
       className={`group focus-ring inline-flex items-center justify-center gap-1.5 rounded px-1.5 py-0.5 text-foreground/90 hover:text-foreground underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground transition-colors ${sizes} font-medium cursor-pointer ${className ?? ''}`}
       aria-live="polite"
     >

@@ -16,7 +16,7 @@ export function AboutIntro({ title, body, img, alt }: { title: string; body: str
         </div>
       </Reveal>
       <Reveal delay={120}>
-        <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg border border-border/60">
+        <div className="relative aspect-[4/3] md:aspect-[3/2] w-full overflow-hidden rounded-lg border border-border/60">
           <Image src={img} alt={alt} fill className="object-cover" />
         </div>
       </Reveal>
@@ -109,7 +109,7 @@ export function AboutStatement({
     <div className="relative mb-6 overflow-hidden">
       <div className="md:grid md:grid-cols-5">
         {/* Left: image fills left half */}
-        <div className="relative h-[280px] sm:h-[340px] md:h-[420px] md:col-span-3">
+        <div className="relative h-[200px] sm:h-[300px] md:h-[420px] md:col-span-3">
           <Image src={img} alt={alt} fill className="object-cover object-left" />
           {/* Mobile: show text below image (no overlay) */}
           <div className="md:hidden px-0 py-4 text-right">

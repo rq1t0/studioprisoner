@@ -16,16 +16,37 @@ export default function ServicePageEN() {
       <div className="space-y-10">
         {services.map((s) => (
           s.id === 'full-production' ? (
-            <div key={s.id} id={s.id} className="flex flex-col items-center text-center">
-              <h2 className="heading-condensed mb-2 text-3xl">FULL PRODUCTION</h2>
-              <div className="text-foreground/90 max-w-[70ch] leading-relaxed">
-                <div>At STUDIO PRISONER, we offer full-scale production — from recording to mastering.</div>
-                <div>By sharing a single vision from start to finish, we ensure every step of the process moves toward one goal.</div>
-                <div>This unified approach allows us to avoid the common pitfalls of fragmented production and achieve the best possible outcome for your music.</div>
+            <div key={s.id} id={s.id}>
+              {/* Mobile/Tablet: 3-card grid */}
+              <div className="text-center lg:hidden">
+                <h2 className="heading-condensed mb-4 text-3xl">FULL PRODUCTION</h2>
+                <div className="mx-auto grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                  <a href="#recording" className="rounded-xl border border-border/60 bg-gradient-to-b from-[#121318] to-[#0f1014] p-4 block focus-ring">
+                    <div className="heading-condensed mb-1 text-lg">RECORDING</div>
+                    <p className="text-sm text-foreground/85 leading-relaxed">From pre-pro through tracking and editing, we build the backbone with a shared vision.</p>
+                  </a>
+                  <a href="#mixing" className="rounded-xl border border-border/60 bg-gradient-to-b from-[#121318] to-[#0f1014] p-4 block focus-ring">
+                    <div className="heading-condensed mb-1 text-lg">MIXING</div>
+                    <p className="text-sm text-foreground/85 leading-relaxed">Hybrid analog/digital approach to reveal intent and shape a powerful, clear balance.</p>
+                  </a>
+                  <a href="#mastering" className="rounded-xl border border-border/60 bg-gradient-to-b from-[#121318] to-[#0f1014] p-4 block focus-ring">
+                    <div className="heading-condensed mb-1 text-lg">MASTERING</div>
+                    <p className="text-sm text-foreground/85 leading-relaxed">Cohesion and reliable translation across systems, delivering the final polish.</p>
+                  </a>
+                </div>
+              </div>
+              {/* Desktop: original centered copy */}
+              <div className="hidden lg:flex flex-col items-center text-center">
+                <h2 className="heading-condensed mb-2 text-3xl">FULL PRODUCTION</h2>
+                <div className="text-foreground/90 max-w-[70ch] leading-relaxed">
+                  <div>At STUDIO PRISONER, we offer full-scale production — from recording to mastering.</div>
+                  <div>By sharing a single vision from start to finish, we ensure every step of the process moves toward one goal.</div>
+                  <div>This unified approach allows us to avoid the common pitfalls of fragmented production and achieve the best possible outcome for your music.</div>
+                </div>
               </div>
             </div>
           ) : s.id === 'recording' ? (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`Recording visual`} fill className="object-cover" />
               </div>
@@ -38,7 +59,7 @@ export default function ServicePageEN() {
               </div>
             </div>
           ) : s.id === 'mixing' ? (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`Mixing visual`} fill className="object-cover" />
               </div>
@@ -51,7 +72,7 @@ export default function ServicePageEN() {
               </div>
             </div>
           ) : s.id === 'mastering' ? (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`Mastering visual`} fill className="object-cover" />
               </div>
@@ -64,7 +85,7 @@ export default function ServicePageEN() {
               </div>
             </div>
           ) : (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`${s.title} visual`} fill className="object-cover" />
               </div>

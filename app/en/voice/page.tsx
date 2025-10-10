@@ -5,7 +5,7 @@ export const revalidate = 60;
 export const metadata = { title: 'VOICE' };
 
 export default async function VoicePageEN() {
-  const voices = await getVoices();
+  const voices = await getVoices('en');
   return (
     <Section>
       <h1 className="heading-condensed mb-8 text-3xl">VOICE</h1>
@@ -27,4 +27,3 @@ export default async function VoicePageEN() {
     </Section>
   );
 }
-

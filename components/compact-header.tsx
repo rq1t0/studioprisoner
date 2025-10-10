@@ -16,11 +16,14 @@ const nav = [
 
 export function CompactHeader() {
   const pathname = usePathname() || '/';
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
   const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const logicalPath = BASE && pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
+  const rawPath = BASE && pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
+  const logicalPath = mounted ? rawPath : '/';
   const [visible, setVisible] = useState(false);
   const [dirUp, setDirUp] = useState(true);
-  const isEn = logicalPath.startsWith('/en');
+  const isEn = mounted ? logicalPath.startsWith('/en') : false;
   const prefix = isEn ? '/en' : '';
   const enSupported = new Set(['/','/about','/services','/works','/voice','/media','/faq','/case-studies','/contact','/epk']);
   const mapHref = (href: string) => {
@@ -29,9 +32,11 @@ export function CompactHeader() {
     return href;
   };
   const handleLangClick = (to: 'en' | 'jp') => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (to === 'jp') {
+    // Only force reload when switching EN -> JP. JP -> EN uses client navigation.
+    if (to === 'jp' && isEn) {
       e.preventDefault();
-      window.location.assign('/');
+      const dest = switchHref('jp');
+      window.location.assign(dest || '/');
     }
   };
   const switchHref = (to: 'en' | 'jp') => {

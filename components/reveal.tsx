@@ -15,6 +15,8 @@ export function Reveal({ children, as = 'div', delay = 0, className }: Props) {
   useEffect(() => {
     if (!ref.current) return;
     const el = ref.current;
+    
+    // パフォーマンス最適化されたIntersection Observer
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -24,9 +26,25 @@ export function Reveal({ children, as = 'div', delay = 0, className }: Props) {
           }
         });
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+      { 
+        rootMargin: '100px 0px -10% 0px', 
+        threshold: 0.05,
+        // パフォーマンス最適化
+        root: null
+      }
     );
-    io.observe(el);
+    
+    // リクエストアイドルコールバックで遅延実行
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        io.observe(el);
+      });
+    } else {
+      setTimeout(() => {
+        io.observe(el);
+      }, 0);
+    }
+    
     return () => io.disconnect();
   }, []);
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { CONTACT_EMAIL } from '@/lib/utils';
 import { CopyEmailButton } from '@/components/copy-email-button';
 
@@ -12,7 +14,7 @@ export function ContactCta({ lang = 'ja' }: Props) {
   const btn = lang === 'en' ? 'Email Us' : 'メール相談';
 
   return (
-    <div className="container px-6 mt-12 md:mt-16">
+    <div className="container px-6 mt-12 md:mt-16" data-contact-cta>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-lg border border-border/60 bg-muted/30 p-4">
         <p className="text-sm text-foreground/85">{text}</p>
         <div className="flex items-center gap-3">

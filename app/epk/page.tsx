@@ -26,9 +26,9 @@ export default async function EpkPage() {
           <Image src={epk.hero} alt="EPK hero" fill className="object-cover" />
         </div>
       </div>
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 md:grid-cols-2">
         {epk.photos.map((p, i) => (
-          <div key={i} className="relative aspect-[3/2] overflow-hidden rounded-md border border-border">
+          <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-md border border-border/70">
             <Image src={p} alt={`Press photo ${i + 1}`} fill className="object-cover" />
           </div>
         ))}

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Reveal } from '@/components/reveal';
 
@@ -34,24 +35,34 @@ export function ServiceCardsEn() {
   ];
 
   return (
-    <div className="grid gap-6 md:grid-cols-3">
+    <div className="grid gap-4 sm:gap-5 md:gap-6 lg:gap-8 md:grid-cols-3">
       {items.map((i, idx) => (
         <Reveal key={i.key} delay={idx * 120} className="group">
-          <Card className="card-hover h-full overflow-hidden">
-            <div className="relative aspect-[3/4] w-full">
-              <Image src={i.img} alt={i.alt} fill className="card-img-zoom object-cover" />
-              <div className="overlay-fade absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50 transition-opacity" aria-hidden />
-              <div className="absolute inset-0 grid place-items-center p-6 text-white text-center">
-                <div className="transition-transform duration-500 will-change-transform group-hover:-translate-y-0.5">
-                  <div className="heading-condensed text-2xl md:text-3xl tracking-wide">{i.title}</div>
-                  <div className="mt-1 text-base md:text-lg opacity-95">{i.subtitle}</div>
-                  <p className="mx-auto mt-3 max-w-[34ch] md:max-w-[46ch] text-sm md:text-base leading-relaxed opacity-95">
-                    {i.body}
-                  </p>
+          <Link href={`/en/services#${i.key}`} className="focus-ring group block">
+            <Card className="card-hover h-full overflow-hidden">
+              <div className="relative aspect-[3/4] w-full">
+                <Image
+                  src={i.img}
+                  alt={i.alt}
+                  fill
+                  className="card-img-zoom object-cover"
+                  quality={75}
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="overlay-fade absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50 transition-opacity" aria-hidden />
+                <div className="absolute inset-0 grid place-items-center p-6 text-white text-center">
+                  <div className="transition-transform duration-500 will-change-transform group-hover:-translate-y-0.5">
+                    <div className="heading-condensed text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-wide">{i.title}</div>
+                    <div className="mt-1 text-sm sm:text-base md:text-lg lg:text-xl opacity-95">{i.subtitle}</div>
+                    <p className="mx-auto mt-3 max-w-[34ch] md:max-w-[46ch] text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed opacity-95">
+                      {i.body}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </Link>
         </Reveal>
       ))}
     </div>

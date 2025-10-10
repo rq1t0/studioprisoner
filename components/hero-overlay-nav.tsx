@@ -18,9 +18,12 @@ const nav = [
 export function HeroOverlayNav() {
   const [show, setShow] = useState(true);
   const pathname = usePathname() || '/';
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
   const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const logicalPath = BASE && pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
-  const isEn = logicalPath.startsWith('/en');
+  const rawPath = BASE && pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
+  const logicalPath = mounted ? rawPath : '/';
+  const isEn = mounted ? logicalPath.startsWith('/en') : false;
   const prefix = isEn ? '/en' : '';
   const enSupported = new Set(['/','/about','/services','/works','/voice','/media','/faq','/case-studies','/contact','/epk']);
   const mapHref = (href: string) => {
@@ -29,9 +32,11 @@ export function HeroOverlayNav() {
     return href;
   };
   const handleLangClick = (to: 'en' | 'jp') => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (to === 'jp') {
+    // Only force reload when switching EN -> JP. JP -> EN uses client navigation.
+    if (to === 'jp' && isEn) {
       e.preventDefault();
-      window.location.assign('/');
+      const dest = switchHref('jp');
+      window.location.assign(dest || '/');
     }
   };
   const switchHref = (to: 'en' | 'jp') => {
@@ -55,14 +60,14 @@ export function HeroOverlayNav() {
   return (
     <div
       className={
-        'pointer-events-auto absolute left-1/2 top-6 z-20 w-full max-w-5xl -translate-x-1/2 text-center transition-opacity duration-150 ' +
+        'pointer-events-none md:pointer-events-auto absolute left-1/2 top-6 z-60 w-full max-w-5xl -translate-x-1/2 text-center transition-opacity duration-150 ' +
         (show ? 'opacity-100' : 'opacity-0 pointer-events-none')
       }
     >
       <div className="inline-block rounded px-2 py-1">
         <Image src="/images/logo-white.png" alt="Studio Prisoner logo" width={360} height={72} className="mx-auto h-auto w-[220px] sm:w-[280px] lg:w-[340px]" />
       </div>
-      <div className="mt-3 hidden justify-center gap-6 md:flex">
+      <div className="site-nav mt-3 hidden justify-center gap-6 md:flex">
         {nav.map((n) => (
           <Link key={n.href} href={mapHref(n.href)} className="nav-link px-2 py-2 text-[15px] text-foreground/85 transition-colors hover:text-foreground focus-ring font-medium md:font-semibold">
             {n.label}
@@ -70,9 +75,9 @@ export function HeroOverlayNav() {
         ))}
       </div>
       <div className="absolute right-0 top-0 hidden items-center gap-2 text-xs text-foreground/85 md:flex">
-        <Link href={switchHref('en')} prefetch={false} onClick={(e) => e.stopPropagation()} className="nav-link focus-ring font-medium md:font-semibold">EN</Link>
+        <Link href={switchHref('en')} prefetch={false} onClick={(e) => { e.stopPropagation(); /* no reload on JP->EN */ }} className="nav-link focus-ring font-medium md:font-semibold">EN</Link>
         <span className="text-foreground/50">/</span>
-        <Link href={switchHref('jp')} prefetch={false} onClick={handleLangClick('jp')} className="nav-link focus-ring font-medium md:font-semibold">JP</Link>
+        <Link href={switchHref('jp')} prefetch={false} onClick={(e) => { e.stopPropagation(); handleLangClick('jp')(e); }} className="nav-link focus-ring font-medium md:font-semibold">JP</Link>
       </div>
     </div>
   );

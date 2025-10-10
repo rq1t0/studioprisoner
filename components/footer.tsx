@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { CONTACT_EMAIL } from '@/lib/utils';
 
@@ -6,6 +8,9 @@ export function Footer({ lang = 'ja' }: { lang?: 'ja' | 'en' }) {
   const contactLabel = lang === 'en' ? 'Contact:' : 'お問い合わせ:';
   const socialLabel = lang === 'en' ? 'Social' : 'SNS';
   const prefix = lang === 'en' ? '/en' : '';
+
+  // Footer duplication is prevented by rendering per-locale layouts only.
+
   return (
     <footer className="mt-24 border-t border-border/60 bg-background/80">
       <div className="container grid gap-6 py-10 md:grid-cols-3">

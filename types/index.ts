@@ -4,6 +4,14 @@ export type Work = {
   title: string;
   roles: Array<'Recording' | 'Mixing' | 'Mastering' | 'Full Production'>;
   releaseDate?: string;
+  /**
+   * Home(top) 表示の任意順。小さいほど先頭。未設定は除外（または補完）
+   */
+  homeOrder?: number;
+  /**
+   * WORKS 一覧の新着順判定用。画像の保存日時と一致しない場合に手動で設定（ISO: YYYY-MM-DD）。
+   */
+  addedAt?: string;
   thumb: string;
   hero?: string;
   youtubeId?: string;
@@ -20,14 +28,23 @@ export type Voice = {
 };
 
 export type Media = {
-  youtubeId: string;
+  youtubeId?: string;
   title: string;
   description?: string;
+  /**
+   * 任意の並び順。小さいほど先頭。未設定ならファイル順。
+   * 別ファイル data/media-order.json が存在する場合はそちらが最優先。
+   */
+  order?: number;
+  /**
+   * YouTube のフルURLを貼ってもOK（自動でID抽出）。
+   */
+  url?: string;
 };
 
 export type Faq = {
   q: string;
-  a: string;
+  a: string | string[];
 };
 
 export type CaseStudy = {

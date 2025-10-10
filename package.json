@@ -10,27 +10,31 @@
     "build:static": "NEXT_OUTPUT=export next build",
     "build:standalone": "NEXT_OUTPUT=standalone next build",
     "start:standalone": "NODE_ENV=production next start -p 9000",
+    "img:normalize": "node scripts/normalize-images.mjs",
+    "img:rename-uploads": "node scripts/rename-uploads.mjs",
     "lint": "next lint",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "format": "prettier --write .",
     "work:add": "node scripts/add-work.mjs",
     "work:import": "node scripts/import-work.mjs",
+    "works:import:csv": "node scripts/import-works-csv.mjs",
     "share:lt": "npx localtunnel --port 9000",
     "share:cf": "cloudflared tunnel --url http://localhost:9000"
   },
   "dependencies": {
     "next": "^14.2.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sharp": "^0.34.4"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^9.1.0",
     "@types/node": "^20.12.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.7",
+    "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.4.47",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.4.10",

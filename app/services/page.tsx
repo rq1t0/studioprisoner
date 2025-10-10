@@ -26,17 +26,38 @@ export default function ServicePage() {
       <div className="space-y-10">
         {services.map((s) => (
           s.id === 'full-production' ? (
-            <div key={s.id} id={s.id} className="flex flex-col items-center text-center">
-              <h2 className="heading-condensed mb-2 text-3xl">FULL PRODUCTION</h2>
-              <div className="text-foreground/90 max-w-[70ch] leading-relaxed">
-                <div>STUDIO PRISONERではレコーディングからマスタリングまで</div>
-                <div>一貫して行うフルプロダクションを提供しています。</div>
-                <div>最初から最後まで常にひとつのゴールを共有して制作を進めることで</div>
-                <div>あらゆる落とし穴を避け、最善の結果へ導くことができると考えています。</div>
+            <div key={s.id} id={s.id}>
+              {/* Mobile/Tablet: 3-card grid */}
+              <div className="text-center lg:hidden">
+                <h2 className="heading-condensed mb-4 text-3xl">FULL PRODUCTION</h2>
+                <div className="mx-auto grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                  <a href="#recording" className="rounded-xl border border-border/60 bg-gradient-to-b from-[#121318] to-[#0f1014] p-4 block focus-ring">
+                    <div className="heading-condensed mb-1 text-lg">RECORDING</div>
+                    <p className="text-sm text-foreground/85 leading-relaxed">プリプロから録音・編集まで、目指す像を共有しながら骨格を作ります。</p>
+                  </a>
+                  <a href="#mixing" className="rounded-xl border border-border/60 bg-gradient-to-b from-[#121318] to-[#0f1014] p-4 block focus-ring">
+                    <div className="heading-condensed mb-1 text-lg">MIXING</div>
+                    <p className="text-sm text-foreground/85 leading-relaxed">アナログとデジタルをハイブリッドに活かし、意図が届くバランスへ。</p>
+                  </a>
+                  <a href="#mastering" className="rounded-xl border border-border/60 bg-gradient-to-b from-[#121318] to-[#0f1014] p-4 block focus-ring">
+                    <div className="heading-condensed mb-1 text-lg">MASTERING</div>
+                    <p className="text-sm text-foreground/85 leading-relaxed">各環境での再現性と統一感を仕上げ、作品としての完成度を高めます。</p>
+                  </a>
+                </div>
+              </div>
+              {/* Desktop: original centered copy */}
+              <div className="hidden lg:flex flex-col items-center text-center">
+                <h2 className="heading-condensed mb-2 text-3xl">FULL PRODUCTION</h2>
+                <div className="text-foreground/90 max-w-[70ch] leading-relaxed">
+                  <div>STUDIO PRISONERではレコーディングからマスタリングまで</div>
+                  <div>一貫して行うフルプロダクションを提供しています。</div>
+                  <div>最初から最後まで常にひとつのゴールを共有して制作を進めることで</div>
+                  <div>あらゆる落とし穴を避け、最善の結果へ導くことができると考えています。</div>
+                </div>
               </div>
             </div>
           ) : s.id === 'recording' ? (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`Recording のイメージ`} fill className="object-cover" />
               </div>
@@ -49,7 +70,7 @@ export default function ServicePage() {
               </div>
             </div>
           ) : s.id === 'mixing' ? (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`Mixing のイメージ`} fill className="object-cover" />
               </div>
@@ -62,7 +83,7 @@ export default function ServicePage() {
               </div>
             </div>
           ) : s.id === 'mastering' ? (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`Mastering のイメージ`} fill className="object-cover" />
               </div>
@@ -75,7 +96,7 @@ export default function ServicePage() {
               </div>
             </div>
           ) : (
-            <div key={s.id} id={s.id} className="grid items-center gap-6 md:grid-cols-2">
+            <div key={s.id} id={s.id} className="grid items-center gap-4 md:gap-6 grid-cols-[140px,1fr] md:grid-cols-2">
               <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-border">
                 <Image src={s.img} alt={`${s.title} のイメージ`} fill className="object-cover" />
               </div>
