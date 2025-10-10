@@ -18,11 +18,14 @@ async function readJson<T>(file: string): Promise<T> {
 export async function getWorks(): Promise<Work[]> {
   const works = await readJson<Work[]>('works.json');
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const isProduction = process.env.NODE_ENV === 'production';
+  const baseUrl = isProduction ? 'https://rq1t0.github.io/studioprisoner' : '';
+  
   // Normalize: fill defaults so data can be simpler to write
   const normalized = works.map((w) => {
     const slug = w.slug;
-    const thumb = w.thumb ? `${basePath}${w.thumb}` : `${basePath}/images/works/uploads/${slug}.jpg`;
-    const hero = w.hero ? `${basePath}${w.hero}` : thumb;
+    const thumb = w.thumb ? `${baseUrl}${basePath}${w.thumb}` : `${baseUrl}${basePath}/images/works/uploads/${slug}.jpg`;
+    const hero = w.hero ? `${baseUrl}${basePath}${w.hero}` : thumb;
     const roles = (w.roles && w.roles.length > 0) ? w.roles : ['Full Production'];
     return { ...w, thumb, hero, roles } as Work;
   });
@@ -89,17 +92,20 @@ export async function getTopWorks(limit = 8): Promise<Work[]> {
 export async function getVoices(locale?: 'ja' | 'en'): Promise<Voice[]> {
   const file = locale === 'en' ? 'voices.en.json' : 'voices.json';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const isProduction = process.env.NODE_ENV === 'production';
+  const baseUrl = isProduction ? 'https://rq1t0.github.io/studioprisoner' : '';
+  
   try {
     const voices = await readJson<Voice[]>(file);
     return voices.map(v => ({
       ...v,
-      image: v.image ? `${basePath}${v.image}` : v.image
+      image: v.image ? `${baseUrl}${basePath}${v.image}` : v.image
     }));
   } catch {
     const voices = await readJson<Voice[]>('voices.json');
     return voices.map(v => ({
       ...v,
-      image: v.image ? `${basePath}${v.image}` : v.image
+      image: v.image ? `${baseUrl}${basePath}${v.image}` : v.image
     }));
   }
 }
@@ -186,11 +192,13 @@ export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
 
 export async function getEpk(): Promise<Epk> {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const isProduction = process.env.NODE_ENV === 'production';
+  const baseUrl = isProduction ? 'https://rq1t0.github.io/studioprisoner' : '';
   const epk = await readJson<Epk>('epk.json');
   return {
     ...epk,
-    hero: epk.hero ? `${basePath}${epk.hero}` : epk.hero,
-    photos: epk.photos ? epk.photos.map(p => `${basePath}${p}`) : epk.photos
+    hero: epk.hero ? `${baseUrl}${basePath}${epk.hero}` : epk.hero,
+    photos: epk.photos ? epk.photos.map(p => `${baseUrl}${basePath}${p}`) : epk.photos
   };
 }
 

@@ -65,7 +65,7 @@ export function HeroOverlayNav() {
       }
     >
       <div className="inline-block rounded px-2 py-1">
-        <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/logo-white.png`} alt="Studio Prisoner logo" width={360} height={72} className="mx-auto h-auto w-[220px] sm:w-[280px] lg:w-[340px]" />
+        <Image src={`${process.env.NODE_ENV === 'production' ? 'https://rq1t0.github.io/studioprisoner' : ''}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/logo-white.png`} alt="Studio Prisoner logo" width={360} height={72} className="mx-auto h-auto w-[220px] sm:w-[280px] lg:w-[340px]" />
       </div>
       <div className="site-nav mt-3 hidden justify-center gap-6 md:flex">
         {nav.map((n) => (
