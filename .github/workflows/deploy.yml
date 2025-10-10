@@ -33,6 +33,7 @@ jobs:
       - name: Build static site
         run: |
           export NEXT_BASE_PATH=/studioprisoner
+          export NEXT_PUBLIC_BASE_PATH=/studioprisoner
           npm run build:static
 
       - name: Upload artifact

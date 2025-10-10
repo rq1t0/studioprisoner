@@ -66,7 +66,7 @@ const nextConfig = {
   } : {}),
   ...(isStandalone ? { output: 'standalone' } : {}),
   env: {
-    NEXT_PUBLIC_BASE_PATH: process.env.NEXT_BASE_PATH || ''
+    NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || process.env.NEXT_BASE_PATH || ''
   },
   ...(BASE_PATH ? { basePath: BASE_PATH } : {}),
   async rewrites() {
